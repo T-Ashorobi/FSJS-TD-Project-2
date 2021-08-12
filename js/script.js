@@ -76,24 +76,27 @@ function addPagination(list) {
    // loop over the number of pages needed
    // create the elements needed to display the pagination button
    // insert the above elements
-   for (let i = 1; i <= pages.length + 1; i++) {
+   // give the first pagination button a class of "active"
+   for (let i = 1; i <= pages; i++) {
       linkList.insertAdjacentHTML('beforeend', `<li>
-      <button type="button">1</button>
+      <button type="button">${i}</button>
       </li>`);
       const active = document.querySelector('button');
       active.className = "active";
+      console.log(active);
    };
-   console.log(list);
-   // give the first pagination button a class of "active"
 
    // create an event listener on the `link-list` element
    linkList.addEventListener('click', (e) => {
       if (e.target.tagName === 'BUTTON') {
+         button.classList.remove('active');
          const newButton = e.target;
-         const firstEle = document.querySelector('.active');
-         firstEle.className = '';
-         newButton.className = 'active';
-         showPage(list, pages)
+         newButton.classList.add('active');
+         // const firstEle = document.querySelector('.active');
+         // firstEle.className = '';
+         // console.log(firstEle);
+         // newButton.className = 'active';
+         // showPage(list, pages)
       }
    });
    // if the click target is a button:
