@@ -39,19 +39,6 @@ function showPage(list, page) {
          </li>
          `);
 
-         // let attach = `
-         // <li class="student-item cf">
-         //    <div class="student-details">
-         //       <img class="avatar" src="${data[i].picture.medium} alt="Profile Picture">
-         //       <h3>${data[i].name.first} ${data[i].name.last}</h3>
-         //       <span class="email">${data[i].email}</span>
-         //    </div>
-         //    <div class="joined-details">
-         //       <span class="date">Joined ${data[i].registered.date}</span>
-         //    </div>   
-         // </li>
-         // `
-
       }
    }
 }
@@ -81,22 +68,25 @@ function addPagination(list) {
       linkList.insertAdjacentHTML('beforeend', `<li>
       <button type="button">${i}</button>
       </li>`);
-      const active = document.querySelector('button');
-      active.className = "active";
-      console.log(active);
+      const firstButton = document.getElementsByTagName('button')[0];
+      //firstButton.className = 'active';
+      firstButton.setAttribute('class', 'active');
+      // console.log(firstButton);
    };
 
    // create an event listener on the `link-list` element
    linkList.addEventListener('click', (e) => {
       if (e.target.tagName === 'BUTTON') {
-         button.classList.remove('active');
+         const first = document.querySelector('.active');
+         first.className = '';
+         // // firstButton.classList.remove('active');
          const newButton = e.target;
-         newButton.classList.add('active');
-         // const firstEle = document.querySelector('.active');
-         // firstEle.className = '';
-         // console.log(firstEle);
-         // newButton.className = 'active';
-         // showPage(list, pages)
+         newButton.className = 'active';
+         // newButton.textContent = '1'; <- 1's start to override the other pagination numbers
+         // // firstEle.className = '';
+         // // console.log(firstEle);
+         // // newButton.className = 'active';
+         showPage(list, pages);
       }
    });
    // if the click target is a button:
@@ -104,7 +94,7 @@ function addPagination(list) {
    // add the active class to the clicked button
    // call the showPage function passing the `list` parameter and page to display as arguments
 }
-
+showPage(data, 1);
 addPagination(data);
 
 // Call functions
