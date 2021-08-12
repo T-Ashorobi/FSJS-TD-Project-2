@@ -80,13 +80,22 @@ function addPagination(list) {
       linkList.insertAdjacentHTML('beforeend', `<li>
       <button type="button">1</button>
       </li>`);
+      const active = document.querySelector('button');
+      active.className = "active";
    };
-   const active = document.querySelector('button');
-   active.className = "active";
    console.log(list);
    // give the first pagination button a class of "active"
 
    // create an event listener on the `link-list` element
+   linkList.addEventListener('click', (e) => {
+      if (e.target.tagName === 'BUTTON') {
+         const newButton = e.target;
+         const firstEle = document.querySelector('.active');
+         firstEle.className = '';
+         newButton.className = 'active';
+         showPage(list, pages)
+      }
+   });
    // if the click target is a button:
    // remove the "active" class from the previous button
    // add the active class to the clicked button
