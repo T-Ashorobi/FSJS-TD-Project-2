@@ -80,13 +80,13 @@ function addPagination(list) {
          const first = document.querySelector('.active');
          first.className = '';
          // // firstButton.classList.remove('active');
-         const newButton = e.target;
+         const newButton = e.target.textContent;
          newButton.className = 'active';
          // newButton.textContent = '1'; <- 1's start to override the other pagination numbers
          // // firstEle.className = '';
          // // console.log(firstEle);
          // // newButton.className = 'active';
-         showPage(list, pages);
+         showPage(list, newButton);
       }
    });
    // if the click target is a button:
