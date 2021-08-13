@@ -20,7 +20,7 @@ Create a 'showPage' function and its purpose is to create a set of pages with 9 
 */
 
 function showPage(list, page) {
-   const startIndex = (page * 9) - 9 + 1;
+   const startIndex = (page * 9) - 9;
    const endIndex = page * 9;
    const studentList = document.getElementsByClassName('student-list')[0];
    studentList.innerHTML = '';
